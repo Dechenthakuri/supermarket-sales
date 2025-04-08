@@ -1,0 +1,76 @@
+-- Find total sales of all products
+select SUM(total) as total_sum
+from supermarket_sales
+
+-- Find total quantities of all the products
+select SUM(quantity) as total_items
+from supermarket_sales
+
+-- Find the average sales
+select (sum(total)/sum(quantity)) as average
+from supermarket_sales
+
+
+-- Find the total $$ earned for each product per each day
+select date, product_line, SUM(total) total_per_day
+from supermarket_sales
+group by date, product_line
+order by date
+
+-- Find the total $$ earned for each product per each month
+SELECT DATENAME(MONTH, DATE) AS month_name, SUM(total) AS total_per_month
+FROM supermarket_sales
+GROUP BY DATENAME(MONTH, DATE), MONTH(DATE)  -- Extracts the numerical month (e.g., 1 for January, 2 for February).
+ORDER BY MONTH(DATE);
+
+-- finding product that made max amount of sales per each day
+SELECT date, product_line, total_earned_product
+FROM (
+    SELECT date, product_line, SUM(total) AS total_earned_product, RANK() OVER (PARTITION BY date ORDER BY SUM(total) DESC) AS rank_per_day
+    FROM supermarket_sales
+    GROUP BY date, product_line
+) AS ranked
+WHERE rank_per_day = 1
+ORDER BY date;
+
+-- finding product that made max amount of sales per each month 
+SELECT month_name, product_line, total_earned_income
+FROM (select datename(month, date) as month_name, month(date) as month_number , product_line,sum(total) as total_earned_income, rank() over (partition by month(date) order by sum(total) DESC ) as rank_per_day
+	from supermarket_sales
+	group by datename(month, date), product_line, month(date)
+	) as ranked
+where rank_per_day =1
+order by month_number;
+
+
+-- Find percentage of sales by products categories
+SELECT product_line, 
+       (total_earned / SUM(total_earned) OVER () * 100) as per_sales_byProduct
+FROM (
+    SELECT product_line, SUM(total) as total_earned
+    FROM supermarket_sales
+    GROUP BY product_line
+) as total_earned_eachproduct
+
+-- Find total products sold per each category 
+SELECT product_line, SUM(quantity) as total_quantity
+from supermarket_sales
+group by product_line
+
+-- Top 5 best sellers of the month by orders and revenue
+SELECT month_name, product_line, total_earned_income
+FROM (select datename(month, date) as month_name, month(date) as month_number , product_line,sum(total) as total_earned_income, rank() over (partition by month(date) order by sum(total) DESC ) as rank_per_day
+	from supermarket_sales
+	group by datename(month, date), product_line, month(date)
+	) as ranked
+where rank_per_day <=5
+order by month_number;
+
+--Bottom 5 worst sellers of the month by orders and revenue
+SELECT month_name, product_line, total_earned_income, rank_per_day
+FROM (select datename(month, date) as month_name, month(date) as month_number , product_line,sum(total) as total_earned_income, rank() over (partition by month(date) order by sum(total) ASC ) as rank_per_day
+	from supermarket_sales
+	group by datename(month, date), product_line, month(date)
+	) as ranked
+where rank_per_day <=5
+order by month_number;
