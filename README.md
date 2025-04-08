@@ -49,5 +49,6 @@ This project involves analyzing supermarket sales data to uncover key business i
 ```
 ## Demo:
 You can view the project in action here: [Link to Power BI Report] ([https://app.powerbi.com/links/4rib6QT_HQ?ctid=6f60f0b3-5f06-4e09-9715-989dba8cc7d8&pbi_source=linkShare](url)).
-![Power BI Dashboard] ()
+![Power BI Dashboard] ([https://github.com/Dechenthakuri/supermarket-sales/blob/main/dashboard.png?raw=true](url))   
+([https://github.com/Dechenthakuri/supermarket-sales/blob/main/nextpage.png?raw=true](url))
 
