@@ -7,7 +7,7 @@ This project involves analyzing supermarket sales data to uncover key business i
 - GitHub for version control and collaboration
 
 ## Installation Instructions:
-1. Clone the repository: //git clone https://github.com/your-username/Supermarket-Sales-Analysis.git
+1. Clone the repository: //git clone https://github.com/your-username/Supermarket-Sales.git
 2. Open the SQL scripts in your SQL editor (e.g., MySQL Workbench, SQL Server Management Studio) to run them.
 3. Open the Power BI file (`Supermarket-Sales-Analysis.pbix`) in Power BI Desktop to explore the dashboard.
 
