@@ -11,7 +11,6 @@ This project involves analyzing supermarket sales data to uncover key business i
 2. Open the SQL scripts in your SQL editor (e.g., MySQL Workbench, SQL Server Management Studio) to run them.
 3. Open the Power BI file (`Supermarket-Sales-Analysis.pbix`) in Power BI Desktop to explore the dashboard.
 
-```
 ## Project Description:
 
 ### 1. Data Collection:
@@ -46,7 +45,7 @@ This project involves analyzing supermarket sales data to uncover key business i
 
 ### 4. Business Insights:
 - The analysis revealed that certain product lines perform better in specific months, and the top-selling products were identified for future marketing and stocking strategies.
-```
+
 ## Demo:
 You can view the project in action here: [Link to Power BI Report] ([https://app.powerbi.com/links/4rib6QT_HQ?ctid=6f60f0b3-5f06-4e09-9715-989dba8cc7d8&pbi_source=linkShare](url)).
 ![Power BI Dashboard] ([https://github.com/Dechenthakuri/supermarket-sales/blob/main/dashboard.png?raw=true](url))   
